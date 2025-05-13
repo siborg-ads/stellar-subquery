@@ -1,0 +1,45 @@
+type Increment @entity {
+  id: ID!
+  newValue: BigInt!
+}
+
+type Initialization @entity {
+  id: ID!
+  nft_factory: String,
+  native_xlm: String,
+  bps: BigInt,
+  admin: String,
+}
+
+type OFFER @entity {
+  id: ID!
+  nft_contract: String,
+  offer_id: BigInt
+}
+
+type Payment @entity {
+  id: ID!
+  from: BigInt
+  to: String
+  amount: BigInt
+  currency: String
+}
+
+type Proposal @entity {
+  id: ID!
+  nft_contract: String
+  token_id: BigInt
+  to: String
+  currency: String
+  price: BigInt
+}
+
+type Review @entity {
+  id: ID!
+  offer_id: BigInt
+  token_id: BigInt
+  proposal_id: BigInt
+  ad_parameter: String,
+  validated: Boolean,
+  reason: String
+}
