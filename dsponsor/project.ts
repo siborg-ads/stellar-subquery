@@ -4,7 +4,8 @@ import {
   StellarProject,
 } from "@subql/types-stellar";
 
-const contractId = "CCHLMFB5BOUWWA6YWSCM33P7IXLDJSBRK2AQYFSBHPXMT3EJ7YUH5IU5";
+const contractId = "CAXT5KWMM6HLDC7PZG3DJEI3LOJHCWUT46WO43KIARNMMQ72TZSU22ZD";
+const marketplaceContractId = "CDSLD6CYVWNUOA6N3YPUO5364EOXRDX6BT4FGYAIAUGCEXVCGA5ANLAP";
 
 const project: StellarProject = {
   specVersion: "1.0.0",
@@ -47,7 +48,7 @@ const project: StellarProject = {
   dataSources: [
     {
       kind: StellarDatasourceKind.Runtime,
-      startBlock: 795501,
+      startBlock: 204729,
       mapping: {
         file: "./dist/index.js",
         handlers: [
@@ -104,6 +105,96 @@ const project: StellarProject = {
               ],
               contractId:
                 contractId,
+            },
+          },
+          
+          // Marketplace handlers
+          {
+            handler: "handleMarketplaceInit",
+            kind: StellarHandlerKind.Event,
+            filter: {
+              topics: [
+                "Init",
+              ],
+              contractId:
+                marketplaceContractId,
+            },
+          },
+          {
+            handler: "handleListing",
+            kind: StellarHandlerKind.Event,
+            filter: {
+              topics: [
+                "LIST",
+              ],
+              contractId:
+                marketplaceContractId,
+            },
+          },
+          {
+            handler: "handleListingCancel",
+            kind: StellarHandlerKind.Event,
+            filter: {
+              topics: [
+                "LISTCXL",
+              ],
+              contractId:
+                marketplaceContractId,
+            },
+          },
+          {
+            handler: "handleListingSold",
+            kind: StellarHandlerKind.Event,
+            filter: {
+              topics: [
+                "SOLD",
+              ],
+              contractId:
+                marketplaceContractId,
+            },
+          },
+          {
+            handler: "handleAuction",
+            kind: StellarHandlerKind.Event,
+            filter: {
+              topics: [
+                "AUCT",
+              ],
+              contractId:
+                marketplaceContractId,
+            },
+          },
+          {
+            handler: "handleBid",
+            kind: StellarHandlerKind.Event,
+            filter: {
+              topics: [
+                "BID",
+              ],
+              contractId:
+                marketplaceContractId,
+            },
+          },
+          {
+            handler: "handleAuctionSold",
+            kind: StellarHandlerKind.Event,
+            filter: {
+              topics: [
+                "AUCT_SOLD",
+              ],
+              contractId:
+                marketplaceContractId,
+            },
+          },
+          {
+            handler: "handleAuctionNoBid",
+            kind: StellarHandlerKind.Event,
+            filter: {
+              topics: [
+                "AUCTNOBID",
+              ],
+              contractId:
+                marketplaceContractId,
             },
           },
         ],
