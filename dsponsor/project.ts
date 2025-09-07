@@ -4,8 +4,8 @@ import {
   StellarProject,
 } from "@subql/types-stellar";
 
-const contractId = "CAXT5KWMM6HLDC7PZG3DJEI3LOJHCWUT46WO43KIARNMMQ72TZSU22ZD";
-const marketplaceContractId = "CDSLD6CYVWNUOA6N3YPUO5364EOXRDX6BT4FGYAIAUGCEXVCGA5ANLAP";
+const contractId = "CCOWQULXM7GAFJT5ONVSCQSAOSCDZZQPBMMXACAQCTUDIRRK4VUFKJ53";
+const marketplaceContractId = "CAHANKZQY2WQI5YON72ZNRO7CTBHYTA7I2H2TYUGXIEK4TKHLSHN335G";
 
 const project: StellarProject = {
   specVersion: "1.0.0",
@@ -48,7 +48,7 @@ const project: StellarProject = {
   dataSources: [
     {
       kind: StellarDatasourceKind.Runtime,
-      startBlock: 204729,
+      startBlock: 1,
       mapping: {
         file: "./dist/index.js",
         handlers: [
