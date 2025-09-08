@@ -43,3 +43,70 @@ type Review @entity {
   validated: Boolean,
   reason: String
 }
+
+# Marketplace Events
+type MarketplaceInit @entity {
+  id: ID!
+  admin: String
+  native_xlm: String
+  fee_bps: BigInt
+}
+
+type Listing @entity {
+  id: ID!
+  listing_id: BigInt
+  nft_contract: String
+  token_id: BigInt
+  price: BigInt
+  seller: String
+  currency: String
+  active: Boolean
+  created_at: BigInt
+}
+
+type ListingCancel @entity {
+  id: ID!
+  listing_id: BigInt
+  cancelled_at: BigInt
+}
+
+type ListingSold @entity {
+  id: ID!
+  listing_id: BigInt
+  buyer: String
+  sold_at: BigInt
+}
+
+type Auction @entity {
+  id: ID!
+  auction_id: BigInt
+  nft_contract: String
+  token_id: BigInt
+  reserve_price: BigInt
+  seller: String
+  currency: String
+  active: Boolean
+  created_at: BigInt
+}
+
+type Bid @entity {
+  id: ID!
+  auction_id: BigInt
+  bidder: String
+  amount: BigInt
+  bid_at: BigInt
+}
+
+type AuctionSold @entity {
+  id: ID!
+  auction_id: BigInt
+  winner: String
+  final_price: BigInt
+  sold_at: BigInt
+}
+
+type AuctionNoBid @entity {
+  id: ID!
+  auction_id: BigInt
+  ended_at: BigInt
+}
