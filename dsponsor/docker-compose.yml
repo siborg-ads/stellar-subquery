@@ -23,6 +23,9 @@ services:
       "postgres":
         condition: service_healthy
     restart: unless-stopped
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
     environment:
       DB_USER: postgres
       DB_PASS: postgres
@@ -33,11 +36,12 @@ services:
       - ./:/app
     command:
       - ${SUB_COMMAND:-} # set SUB_COMMAND env variable to "test" to run tests
-      - -f=/app
+      - -f=/app/project.yaml
       - --unsafe
       - --db-schema=app
       - --workers=1 # The more the faster
       - --batch-size=5 # The higher the faster, set low to avoid rate limit on SDF endpoint
+      - --force-clean
     healthcheck:
       test: ["CMD", "curl", "-f", "http://subquery-node:3000/ready"]
       interval: 3s
